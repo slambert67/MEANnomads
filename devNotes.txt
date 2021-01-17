@@ -1,0 +1,82 @@
+Check installation
+------------------
+node -v
+npm -v
+
+Create new node project/package
+-------------------------------
+npm init
+- creates package.json
+- entry point (index.js) -> property 'main' in package.json
+
+Create entry point
+------------------
+index.js
+- console.log('hello world');
+
+Test entry point
+----------------
+node index.js
+Entry points may be different across projects.
+So define an alias for the 'start' lifecycle script
+
+Lifecycle scripts
+-----------------
+Define alias in package.json 'scripts' object
+- "start": "node index.js"
+
+'test' alias already defined
+- "test": "echo \"Error: no test specified\" && exit 1"
+
+Lifecycle scripts invoked as follows:
+- npm <lifecycle script name> e.g. npm start
+
+Non lifecycle scripts
+---------------------
+Define alias in package.json 'scripts' object
+- "myCustomScript": "echo \"Hello from my custom script\" && exit 1"
+
+Non lifecycle scripts invoked as follows:
+- npm run <custom script name> e.g. npm run myCustomScript
+
+Install express
+---------------
+npm install express
+- adds entry into package.json 'dependencies' object. e.g. "express": "^4.17.1"
+- creates node_modules folder
+- contains express + loads of other stuff (dependencies)
+
+Define express as required by my entry point
+--------------------------------------------
+const express = require('express');
+const app = express();
+
+Define routing & middleware
+---------------------------
+see learnMiddleware.js
+
+
+Initialise node server
+----------------------
+app.listen(3000);
+
+
+========================================
+Response object
+---------------
+var body = 'hello world';
+var content_length = body.length;
+res.writeHead(200, {
+    'Content-Length': content_length,
+    'Content-Type': 'text/plain'
+});
+res.end(body);
+---
+res.send('<h1>hello world</h1>');
+---
+res.json( "jsonkey":"jsonvalue");
+========================================
+
+
+
+

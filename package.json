@@ -1,0 +1,24 @@
+{
+  "name": "meannomads",
+  "version": "1.0.0",
+  "description": "Nomads badminton site on MEAN stack",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "mycustomscript": "echo \"my custom script\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/slambert67/MEANnomads.git"
+  },
+  "author": "Steve Lambert",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/slambert67/MEANnomads/issues"
+  },
+  "homepage": "https://github.com/slambert67/MEANnomads#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
