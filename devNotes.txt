@@ -3,22 +3,26 @@ Check installation
 node -v
 npm -v
 
+
 Create new node project/package
 -------------------------------
 npm init
 - creates package.json
 - entry point (index.js) -> property 'main' in package.json
 
+
 Create entry point
 ------------------
 index.js
 - console.log('hello world');
+
 
 Test entry point
 ----------------
 node index.js
 Entry points may be different across projects.
 So define an alias for the 'start' lifecycle script
+
 
 Lifecycle scripts
 -----------------
@@ -31,6 +35,7 @@ Define alias in package.json 'scripts' object
 Lifecycle scripts invoked as follows:
 - npm <lifecycle script name> e.g. npm start
 
+
 Non lifecycle scripts
 ---------------------
 Define alias in package.json 'scripts' object
@@ -39,6 +44,7 @@ Define alias in package.json 'scripts' object
 Non lifecycle scripts invoked as follows:
 - npm run <custom script name> e.g. npm run myCustomScript
 
+
 Install express
 ---------------
 npm install express
@@ -46,10 +52,35 @@ npm install express
 - creates node_modules folder
 - contains express + loads of other stuff (dependencies)
 
+
 Define express as required by my entry point
 --------------------------------------------
 const express = require('express');
 const app = express();
+
+
+Install mongoDB
+---------------
+Simple msi - install as windows service
+mongo.exe to access db
+- show databases
+- use newDB
+- db.items.insert({name:"name"});
+- db.items.find();
+
+
+Access mongoDB from node
+------------------------
+Use mongoose
+- npm install mongoose
+- const mongoose = require('mongoose);
+- mongoose.connect( process.env.DATABASE_URL, {useNewUrlParser: true} );  // local for dev or deployed on web - use environment variable
+  - npm install --save-dev dotenv - environment variable functionality
+  - define environment variables in .env file - DATABASE_URL=mongodb://localhost/<dbname>
+  - at top of file : if (process.env.NODE_ENV !== 'production' {require('dotenv').load()})
+- const db = mongoose.connection();
+- db.on('error', error => console.error(error));
+- db.once('open', () => console.log('Connected to mongoose!'));
 
 Define routing & middleware
 ---------------------------
@@ -78,5 +109,40 @@ res.json( "jsonkey":"jsonvalue");
 ========================================
 
 
+Authentication (least to most complex)
+========================================
+Options
+- session         (passport local strategy) 
+  Authentication - who is the user
+- JSON web tokens (passport jwt strategy)
+  Authentication - who is the user
+- oAuth 
+  Attempts to separate out the 2 components (Authentication and Authprisation) I think
+  - In-House
+  - Saas (s/w as a service)
+- Other/ad-hoc
+========================================
 
+
+HTP header - see MDN
+========================================
+General headers
+- can be request or response related
+- meta data about the request
+Response headers
+- server creates a response header
+- e.g. content Type
+       cookie information
+Request headers
+- refresh google -> browser creates a request header
+- e.g. specifies what kind of data I accept
+       cookie information ( can set using document.cookie )
+       user-agent. i.e. which browser
+
+========================================
+
+
+Express session
+========================================
+========================================
 
