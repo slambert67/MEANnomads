@@ -65,15 +65,17 @@ Simple msi - install as windows service
 mongo.exe to access db
 - show databases
 - use newDB
+- show collections
 - db.items.insert({name:"name"});
 - db.items.find();
+
 
 
 Access mongoDB from node
 ------------------------
 Use mongoose
 - npm install mongoose
-- const mongoose = require('mongoose);
+- const mongoose = require('mongoose');
 - mongoose.connect( process.env.DATABASE_URL, {useNewUrlParser: true} );  // local for dev or deployed on web - use environment variable
   - npm install --save-dev dotenv - environment variable functionality
   - define environment variables in .env file - DATABASE_URL=mongodb://localhost/<dbname>
@@ -81,6 +83,19 @@ Use mongoose
 - const db = mongoose.connection();
 - db.on('error', error => console.error(error));
 - db.once('open', () => console.log('Connected to mongoose!'));
+-db.<collection>.find()
+
+
+Express session
+---------------
+Sessions differ from cookies by where their data is stored
+cookie stores data in browser
+session stores data on server side (i.e. express application)
+- typically stores more data than cookie
+- can't / don't want to store user credentials in cookie
+
+
+
 
 Define routing & middleware
 ---------------------------

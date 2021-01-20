@@ -19,7 +19,9 @@
   },
   "homepage": "https://github.com/slambert67/MEANnomads#readme",
   "dependencies": {
+    "connect-mongo": "^3.2.0",
     "express": "^4.17.1",
+    "express-session": "^1.17.1",
     "mongoose": "^5.11.12"
   }
 }
